@@ -1,60 +1,61 @@
-# Twitter Sentiment Analysis using NLP
+# **Twitter Sentiment Analysis Using NLP**
 
-## Introduction
-This project focuses on performing sentiment analysis on a Twitter dataset to classify tweets into categories such as Positive, Negative, Neutral, and Irrelevant. Sentiment analysis helps in understanding public opinion and extracting insights from vast amounts of textual data shared on social media platforms like Twitter.
-
-## Objective
-The primary objective of this project is to apply Natural Language Processing (NLP) techniques to analyze the sentiments expressed in tweets. Specifically, the project aims to:
-- Preprocess tweet text to remove noise and enhance model performance.
-- Perform traditional sentiment analysis using labeled data.
-- Implement NLP-based sentiment analysis using TextBlob.
-- Compare traditional sentiment labels with NLP-based predictions.
-- Visualize the distribution of sentiments and polarity scores.
-- Identify tweets with extreme sentiments for qualitative insights.
-
-## Steps Conducted
-1. **Data Loading and Exploration:**
-   - Loaded the dataset containing tweets, their IDs, entities, and labeled sentiments.
-   - Dropped rows with missing values to ensure data quality.
-
-2. **Data Preprocessing:**
-   - Cleaned tweets by removing URLs, special characters, numbers, and extra spaces.
-   - Converted text to lowercase for consistency.
-
-3. **Traditional Sentiment Analysis:**
-   - Analyzed the distribution of sentiment labels provided in the dataset.
-   - Visualized the sentiment distribution using bar plots.
-
-4. **NLP-Based Sentiment Analysis:**
-   - Used TextBlob to compute the polarity score for each tweet:
-     - Positive sentiment if polarity > 0.
-     - Negative sentiment if polarity < 0.
-     - Neutral sentiment if polarity = 0.
-   - Created a new column to store the NLP-based sentiment predictions.
-
-5. **Comparison of Traditional and NLP-Based Analysis:**
-   - Compared traditional sentiment labels with NLP-based predictions.
-   - Visualized the comparison using stacked bar plots.
-
-6. **Sentiment Score Analysis:**
-   - Extracted sentiment polarity scores to understand the intensity of emotions.
-   - Visualized the distribution of sentiment scores using histograms.
-   - Summarized sentiment scores with statistical measures like mean, standard deviation, minimum, and maximum.
-
-7. **Extreme Sentiments:**
-   - Identified and displayed the top 5 most positive and negative tweets based on polarity scores.
-
-## Results
-- Traditional sentiment labels and NLP-based predictions showed some degree of alignment, though not perfect.
-- Sentiment score distribution indicated a slight positive bias in the dataset, with a mean score of 0.0767.
-- Extreme sentiment tweets highlighted the strongest emotional expressions, both positive and negative.
-
-## Conclusion
-This project successfully applied NLP techniques to perform sentiment analysis on Twitter data. It demonstrated the effectiveness of combining traditional sentiment analysis with automated methods like TextBlob for a deeper understanding of textual data.
+## **Introduction**  
+This project analyzes **73,996 tweets** from the `twitter_training.csv` dataset to understand public sentiment using Natural Language Processing (NLP). The dataset includes columns like `Tweet Content`, `Sentiment` (labeled as Positive/Negative/Neutral/Irrelevant), and `Entity` (e.g., brands, topics). The goal is to compare **traditional sentiment labels** with **NLP-based sentiment scores** (using TextBlob) and uncover patterns in public opinion.
 
 ---
-Feel free to explore the code, tweak the model, and visualize the results further. Contributions and feedback are welcome!
 
-**Tools Used:** Python, Pandas, TextBlob, Matplotlib, Seaborn, Sklearn.
+## **Objective**  
+1. **Compare traditional sentiment labels** (pre-classified) with **NLP-derived sentiment** (TextBlob).  
+2. **Quantify sentiment intensity** using polarity scores (-1 to +1).  
+3. **Identify extreme sentiments** (most positive/negative tweets) for actionable insights.  
 
-**Author:** [Jay Thakur]
+---
+
+## **Steps Conducted**  
+
+### **1. Data Preprocessing**  
+- **Handled Missing Values**: Dropped rows with null entries.  
+- **Traditional Sentiment Distribution**: Visualized labeled sentiments (Positive, Negative, Neutral, Irrelevant).  
+
+### **2. NLP Sentiment Analysis**  
+- **TextBlob Implementation**:  
+  - **Categorized Tweets**: `Positive` (polarity > 0), `Negative` (polarity < 0), `Neutral` (polarity = 0).  
+  - **Polarity Scores**: Calculated continuous scores (-1 to +1) for granular sentiment analysis.  
+
+### **3. Comparative Analysis**  
+- **Traditional vs. NLP Labels**: Stacked bar chart showing alignment/misalignment between manual labels and NLP predictions.  
+- **Key Findings**:  
+  - **Discrepancies**: Some tweets labeled "Neutral" in traditional analysis were classified as "Positive" or "Negative" by NLP.  
+  - **Strong Agreement**: Most "Positive" labeled tweets aligned with NLP's "Positive" class.  
+
+### **4. Sentiment Intensity Analysis**  
+- **Distribution Plot**: Majority of tweets had **mild positivity** (mean polarity: 0.077).  
+- **Extreme Sentiments**:  
+  - **Most Positive**: "Platinum is the best loot @Borderlands" (polarity = 1).  
+  - **Most Negative**: "What terrible bitch!" (polarity = -1).  
+
+---
+
+## **Key Insights**  
+1. **Sentiment Distribution**:  
+   - **Traditional Labels**: Dominated by "Neutral" and "Positive" sentiments.  
+   - **NLP Scores**: Revealed hidden negativity in tweets labeled "Neutral."  
+
+2. **NLP Advantages**:  
+   - Detected **nuanced sentiments** (e.g., sarcasm, mild positivity) missed by manual labels.  
+   - Provided **quantifiable metrics** (polarity scores) for trend analysis.  
+
+3. **Business Applications**:  
+   - **Brand Monitoring**: Identify negative tweets for crisis management (e.g., "@EpicGames" complaints).  
+   - **Campaign Optimization**: Leverage highly positive tweets (e.g., "@Borderlands" praise) for marketing.  
+
+---
+
+## **Conclusion**  
+The project demonstrated **NLP's superiority** in capturing nuanced sentiments compared to traditional labels. While TextBlob provided granular polarity scores, future work could:  
+- Use **advanced models** (BERT, VADER) for context-aware analysis.  
+- Address **sarcasm/irony detection** to improve accuracy.  
+
+**Tools Used**: Python, Pandas, TextBlob, Matplotlib, Seaborn  
+**Author**: Jay Thakur
